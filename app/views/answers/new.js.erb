@@ -1,0 +1,6 @@
+<% if current_user %>
+  $('#form').empty().append("<%= j render 'new_answer_form' %>");
+<% else %>
+  window.location.replace('<%= request.base_url %>/users/sign_in');
+<% end %>
+

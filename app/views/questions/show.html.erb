@@ -1,0 +1,46 @@
+<div class="row">
+  <h1 class="center"><%= @question.title %></h1>
+</div>
+<div id="question" class="row">
+  <div class="row">
+    <h3 id='question-title' class="subheader columns">
+      <%= @question.title %>
+      <% if can? :destroy, @question %>
+        <%= link_to '', question_path(@question), method: "delete", class: "fi-trash" %> 
+      <% end %>
+    </h3>
+    <h6 class="subheader">Asked by <%= @question.user.email %> at: <%= @question.created_at.strftime("%A %B %-d at %I:%m") %></h6>
+  </div>
+  <div class="row">
+    <p><%= @question.content %>
+  </div>
+  <div class="row">
+    <%= link_to "Answer",
+                new_answer_path(question_id: @question.id),
+                id: "answer-button",
+                remote: true %> ||
+    <%= link_to "Improve this question",
+                new_comment_path(commentable_id: @question.id, commentable_type: "Question"),
+                id: "question-comment-button",
+                class: "comment-button",
+                remote: true %>
+  </div>
+  <br>
+  <div id="question-comment-list" class='row'>
+    <% @question.comments.each do |comment| %>
+      <%= render 'comments/comment', object: comment %>
+    <% end %>
+  </div>
+  <div class='row'><hr class='min_margin'></div>
+</div>
+
+<div id="form" class="row"></div>
+
+<section id="answer-list" class="answers row">
+  <h3><%= pluralize(@question.answers.count, "Answer") %></h3>
+  <% if @question.answers.any? %>
+    <% @question.answers.each do |answer| %>
+      <%= render 'answers/answer', object: answer %>
+    <% end %>
+  <% end %>
+</section>

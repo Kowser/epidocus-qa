@@ -1,0 +1,48 @@
+@import "foundation/variables";
+
+.min_margin {
+  margin: 1px;
+}
+
+.center {
+	text-align: center;
+}
+
+.form-errors {
+	color: #7f0a0c;
+}
+
+textarea {
+	height: em-calc(150px);
+}
+
+#answer-list {
+  padding-top: em-calc(40px);
+  h3 {
+    border: solid 3px;
+    background-color: lightgreen;
+    padding-left: em-calc(5px);
+  }
+}
+
+.text-right {
+  text-align: right;
+}
+
+.header-panel {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d9d9d9;
+  margin-bottom: 1.25em;
+  padding: 1.25em;
+  background: #f2f2f2;
+}
+
+.icon-large {
+  font-size: em-calc(25px);
+}
+
+.header-left {
+  margin-top: em-calc(35px);
+}
+
